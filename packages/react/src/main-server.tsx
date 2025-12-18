@@ -23,7 +23,7 @@ export const render = async (url: string, query: Record<string, string>): Promis
     payload: { ...initialProductState },
   });
 
-  let title = "쇼핑몰";
+  let title = "쇼핑몰 - 홈";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let initialData: any = {};
 
@@ -80,7 +80,7 @@ export const render = async (url: string, query: Record<string, string>): Promis
         },
       });
 
-      title = product.title;
+      title = `${product.title} - 쇼핑몰`;
       initialData = {
         currentProduct: product,
         relatedProducts,
