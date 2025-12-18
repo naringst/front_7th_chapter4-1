@@ -20,7 +20,9 @@ export const HomePage = withLifecycle(
   (props) => {
     const productsState = props ?? productStore.getState();
 
-    const { search: searchQuery, limit, sort, category1, category2 } = router.query;
+    // SSR에서는 props.query 사용, CSR에서는 router.query 사용
+    const querySource = props?.query || router.query;
+    const { search: searchQuery, limit, sort, category1, category2 } = querySource;
     const { products, loading, error, totalCount, categories } = productsState;
     const category = { category1, category2 };
     const hasMore = products.length < totalCount;
